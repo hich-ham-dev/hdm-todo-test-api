@@ -3,7 +3,7 @@ import { UseCase } from '../../index';
 import TaskRepository from '../../Repositories/TaskRepository';
 
 @Injectable()
-export default class DeleteTask
+export default class DeleteTaskUseCase
   implements UseCase<Promise<boolean>, [id: number]>
 {
   constructor(private readonly taskRepository: TaskRepository) {}
