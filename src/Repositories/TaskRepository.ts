@@ -38,4 +38,13 @@ export default class TaskRepository {
       });
     }
   }
+
+  async update(id: number, data: Prisma.TaskUpdateInput) {
+    return this.prisma.task.update({
+      where: {
+        id,
+      },
+      data,
+    });
+  }
 }
