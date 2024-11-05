@@ -3,15 +3,16 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Task {
-  id        Int      @id @default(autoincrement())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  id         Int      @id @default(autoincrement())
+  name       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
   categoryId Int
   category   Category @relation(fields: [categoryId], references: [id])
 }
@@ -21,5 +22,5 @@ model Category {
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-  tasks     Task[]   @relation
+  tasks     Task[]
 }
